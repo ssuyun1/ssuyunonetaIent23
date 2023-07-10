@@ -5,12 +5,10 @@
 *&---------------------------------------------------------------------*
 REPORT zot_21_helloworld.
 
-*WRITE 'hello world'. "comment tırnaktan sonrakiileri commentler
+*WRITE 'hello world'. "comment
 
 
-DATA : lv_int  TYPE i,
-       lv_int2 TYPE i.
+
 
        cl_demo_output=>write_text( 'hello' ).
        cl_demo_output=>display( ).
-*       *class ile yazılmış hali.

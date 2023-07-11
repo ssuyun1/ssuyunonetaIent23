@@ -358,35 +358,40 @@ cl_demo_output=>write( lt_komplex ).
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""11
-
-SELECTION-SCREEN BEGIN OF BLOCK b1 WITH FRAME TITLE title.
-
-PARAMETERS : sayi1 TYPE i ,
-            sayi2 TYPE i.
-
-SELECTION-SCREEN END OF BLOCK b1.
-SELECTION-SCREEN BEGIN OF BLOCK b2 WITH FRAME TITLE title2.
-PARAMETERS : toplam RADIOBUTTON GROUP gr1,
-             cıkarma RADIOBUTTON GROUP gr1,
-             carpma RADIOBUTTON GROUP gr1,
-             bolme RADIOBUTTON GROUP gr1.
- SELECTION-SCREEN  END OF BLOCK b2.
- SELECTION-SCREEN BEGIN OF BLOCK b3 WITH FRAME TITLE title3.
-
-PARAMETERS : sonuc TYPE i .
-
-
-SELECTION-SCREEN END OF BLOCK b3.
-
-INITIALIZATION.
-  title = 'Sayılar'.
-  title2 = 'İşlemler'.
-  title3 = 'sonuç'.
-
-
-
+*
+*SELECTION-SCREEN BEGIN OF BLOCK b1 WITH FRAME TITLE text-001.
+*
+*PARAMETERS : sayi1 TYPE i ,
+*            sayi2 TYPE i.
+*
+*SELECTION-SCREEN END OF BLOCK b1.
+*SELECTION-SCREEN BEGIN OF BLOCK b2 WITH FRAME TITLE title2.
+*PARAMETERS : toplam RADIOBUTTON GROUP gr1,
+*             cıkarma RADIOBUTTON GROUP gr1,
+*             carpma RADIOBUTTON GROUP gr1,
+*             bolme RADIOBUTTON GROUP gr1.
+* SELECTION-SCREEN  END OF BLOCK b2.
+* SELECTION-SCREEN BEGIN OF BLOCK b3 WITH FRAME TITLE title3.
+*
+*PARAMETERS : sonuc TYPE i .
+*
+*
+*SELECTION-SCREEN END OF BLOCK b3.
+*
+*INITIALIZATION.
+*  title = 'Sayılar'.
+*  title2 = 'İşlemler'.
+*  title3 = 'sonuç'.
+*
 
 
+lv_number2 = 0.
+
+TRY.
+    lv_bolme = lv_number1 / lv_number2.
+  CATCH cx_sy_zerodivide.
+    cl_demo_output=>write( |Sıfıra bölme yapılamaz!| ).
+ENDTRY.
 
 
 

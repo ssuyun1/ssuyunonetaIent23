@@ -12,6 +12,18 @@
    </PROGDIR>
    <TPOOL>
     <item>
+     <ID>I</ID>
+     <KEY>001</KEY>
+     <ENTRY>SAYİ GİRİS</ENTRY>
+     <LENGTH>20</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>002</KEY>
+     <ENTRY>İŞLEMLER</ENTRY>
+     <LENGTH>20</LENGTH>
+    </item>
+    <item>
      <ID>R</ID>
      <ENTRY>hesap makinesi</ENTRY>
      <LENGTH>14</LENGTH>

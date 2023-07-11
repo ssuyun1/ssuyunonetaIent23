@@ -11,6 +11,7 @@
     <item>
      <FUNCNAME>ZOT_21_DO_MATH_OPERATIONS</FUNCNAME>
      <SHORT_TEXT>Math operations</SHORT_TEXT>
+     <EXCEPTION_CLASSES>X</EXCEPTION_CLASSES>
     </item>
    </FUNCTIONS>
   </asx:values>

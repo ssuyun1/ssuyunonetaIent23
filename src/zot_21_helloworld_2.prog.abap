@@ -1,14 +1,12 @@
 *&---------------------------------------------------------------------*
-*& Report zot_21_helloworld
+*& Report zot_21_helloworld_2
 *&---------------------------------------------------------------------*
 *&
 *&---------------------------------------------------------------------*
-REPORT zot_21_helloworld.
-
-*WRITE 'hello world'. "comment
+REPORT zot_21_helloworld_2.
 
 
+cl_demo_output=>write( 'hello' ).
 
 
-
-       cl_demo_output=>display('Hello' ).
+ cl_demo_output=>display( ).

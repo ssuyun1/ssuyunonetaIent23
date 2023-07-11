@@ -10,5 +10,5 @@ REPORT zot_21_helloworld.
 
 
 
-       cl_demo_output=>write_text( 'hello' ).
+       cl_demo_output=>write_text( 'Hello' ).
        cl_demo_output=>display( ).

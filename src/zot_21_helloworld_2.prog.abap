@@ -6,7 +6,12 @@
 REPORT zot_21_helloworld_2.
 
 
-cl_demo_output=>write( 'hello' ).
+DATA : a , b , c TYPE i.
 
+ a = '81'.
+ b = '12'.
+ c = a + b .
 
- cl_demo_output=>display( ).
+ write c .
+ c = a - b .
+ WRITE c.

@@ -31,17 +31,25 @@ DATA:  BEGIN OF STATUS_ZOT_21_T_P_MAST1              .   "state vector
 DATA:  END OF STATUS_ZOT_21_T_P_MAST1              .
 CONTROLS: TCTRL_ZOT_21_T_P_MAST1
             TYPE TABLEVIEW USING SCREEN '0001'.
+*...processing: ZOT_21_T_TTABLE.................................*
+DATA:  BEGIN OF STATUS_ZOT_21_T_TTABLE               .   "state vector
+         INCLUDE STRUCTURE VIMSTATUS.
+DATA:  END OF STATUS_ZOT_21_T_TTABLE               .
+CONTROLS: TCTRL_ZOT_21_T_TTABLE
+            TYPE TABLEVIEW USING SCREEN '0009'.
 *.........table declarations:.................................*
 TABLES: *ZOT_21_T_P_AILE               .
 TABLES: *ZOT_21_T_P_ATUR               .
 TABLES: *ZOT_21_T_P_ILTSM              .
 TABLES: *ZOT_21_T_P_ITUR               .
 TABLES: *ZOT_21_T_P_MAST1              .
+TABLES: *ZOT_21_T_TTABLE               .
 TABLES: ZOT_21_T_P_AILE                .
 TABLES: ZOT_21_T_P_ATUR                .
 TABLES: ZOT_21_T_P_ILTSM               .
 TABLES: ZOT_21_T_P_ITUR                .
 TABLES: ZOT_21_T_P_MAST1               .
+TABLES: ZOT_21_T_TTABLE                .
 
 * general table data declarations..............
   INCLUDE LSVIMTDT                                .

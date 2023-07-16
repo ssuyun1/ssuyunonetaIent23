@@ -81,7 +81,7 @@ START-OF-SELECTION.
     lv_s_dk = lv_saat_fark DIV 60 .
     lv_s_saniye = lv_saat_fark MOD 60 .
 
-
+WRITE: | { ls_zaman-indexi }. INDEX'E AIT KAYIT; |.
     IF lv_s_yil NE 0.
       WRITE : | { lv_s_yil } YIL| .
     ENDIF.

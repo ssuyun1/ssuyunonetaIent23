@@ -4,6 +4,19 @@
 *&
 *&---------------------------------------------------------------------*
 REPORT zot_21_p_zmn.
+DATA : lv_tarih1    TYPE dats,
+       lv_tarih2    TYPE dats,
+       lv_zmn1      TYPE tims,
+       lv_zmn2      TYPE tims,
+       lv_s_yil     TYPE i,
+       lv_s_ay      TYPE i,
+       lv_s_gun     TYPE i,
+       lv_s_saat    TYPE i,
+       lv_s_dk      TYPE i,
+       lv_s_saniye  TYPE i,
+       lv_fark1     TYPE i,
+       lv_fark2     TYPE i,
+       lv_saat_fark TYPE i.
 
 
 DATA   lt_zaman TYPE TABLE OF zot_21_t_zmn.
@@ -40,22 +53,10 @@ START-OF-SELECTION.
                   bas_saat    = '151315'
                   bit_tarih   = '20230228'
                   bit_saat     =  '151015' ) TO lt_zaman.
-
+ MODIFY zot_21_t_zmn FROM TABLE lt_zaman.
 
   LOOP AT lt_zaman INTO ls_zaman .
-    DATA : lv_tarih1    TYPE dats,
-           lv_tarih2    TYPE dats,
-           lv_zmn1      TYPE tims,
-           lv_zmn2      TYPE tims,
-           lv_s_yil     TYPE i,
-           lv_s_ay      TYPE i,
-           lv_s_gun     TYPE i,
-           lv_s_saat    TYPE i,
-           lv_s_dk      TYPE i,
-           lv_s_saniye  TYPE i,
-           lv_fark1     TYPE i,
-           lv_fark2     TYPE i,
-           lv_saat_fark TYPE i.
+
 
     lv_tarih1 = ls_zaman-bas_tarih.
     lv_tarih2 = ls_zaman-bit_tarih.
@@ -81,7 +82,7 @@ START-OF-SELECTION.
     lv_s_dk = lv_saat_fark DIV 60 .
     lv_s_saniye = lv_saat_fark MOD 60 .
 
-WRITE: | { ls_zaman-indexi }. INDEX'E AIT KAYIT; |.
+    WRITE: | { ls_zaman-indexi }. INDEX'E AIT KAYIT; |.
     IF lv_s_yil NE 0.
       WRITE : | { lv_s_yil } YIL| .
     ENDIF.

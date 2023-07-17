@@ -32,29 +32,6 @@ START-OF-SELECTION.
   WHERE indexi IN s_index.
 
 
-  APPEND VALUE #( indexi        = 1
-              bas_tarih = '20230201'
-              bas_saat    = '090000'
-              bit_tarih   = '20230401'
-              bit_saat     =  '080000' ) TO lt_zaman.
-
-  APPEND VALUE #( indexi        = 2
-                  bas_tarih = '20230201'
-                  bas_saat    = '101010'
-                  bit_tarih   = '20250405'
-                  bit_saat     =  '111111' ) TO lt_zaman.
-  APPEND VALUE #( indexi        = 3
-                  bas_tarih = '20230201'
-                  bas_saat    = '121212'
-                  bit_tarih   = '20240101'
-                  bit_saat     =  '181210' ) TO lt_zaman.
-  APPEND VALUE #( indexi        = 4
-                  bas_tarih = '20230201'
-                  bas_saat    = '151315'
-                  bit_tarih   = '20230228'
-                  bit_saat     =  '151015' ) TO lt_zaman.
- MODIFY zot_21_t_zmn FROM TABLE lt_zaman.
-
   LOOP AT lt_zaman INTO ls_zaman .
 
 

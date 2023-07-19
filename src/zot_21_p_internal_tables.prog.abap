@@ -8,17 +8,14 @@ REPORT zot_21_p_internal_tables.
 
 
 DATA : lt_materia_1 TYPE TABLE OF zot_00_t_materia.
-*       ls_materia_1 TYPE zot_00_t_materia.
 
 SELECT *
 INTO TABLE lt_materia_1
 FROM zot_00_t_materia.
 
 
-
-
 DATA : lt_materia_2 TYPE TABLE OF zot_00_t_materia.
-*       ls_materia_2  TYPE zot_00_t_materia.
+
 DATA : lt_materia_join TYPE TABLE OF zot_00_t_materia.
 
 lt_materia_2 =  VALUE #( BASE lt_materia_2  (  matkl = 'C'
@@ -58,7 +55,7 @@ LOOP AT lt_materia_1 INTO data(ls_materia_1).
 ENDLOOP.
 
 
-""""""""""""""
+""""""""""""""birleştirme
 
 LOOP AT lt_materia_1 INTO DATA(ls_materia_j).
   APPEND  ls_materia_j TO  lt_materia_join .
@@ -93,5 +90,6 @@ SORT lt_materia_join BY menge ASCENDING.
 SORT lt_materia_collect BY menge DESCENDING.
 
 """"""""""
-cl_demo_output=>display( lt_materia_join ).
-cl_demo_output=>display( lt_materia_collect ).
+cl_demo_output=>write( lt_materia_join ).
+cl_demo_output=>write( lt_materia_collect ).
+cl_demo_output=>display( ).

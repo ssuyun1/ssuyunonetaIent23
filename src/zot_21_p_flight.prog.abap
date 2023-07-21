@@ -5,11 +5,8 @@
 *&---------------------------------------------------------------------*
 REPORT ZOT_21_P_FLIGHT.
 
-SELECTION-SCREEN BEGIN OF BLOCK b1 WITH FRAME TITLE TEXT-001.
-  PARAMETERS: p_docno TYPE s_carrid.
-SELECTION-SCREEN END OF BLOCK b1.
 
-START-OF-SELECTION.
+ data :p_docno TYPE s_carrid.
  DATA : l_fmname     TYPE funcname,
          l_params     TYPE sfpoutputparams,
          l_docparams  TYPE sfpdocparams,

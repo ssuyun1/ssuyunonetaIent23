@@ -4,10 +4,11 @@
 CLASS lcl_main_controller DEFINITION CREATE PRIVATE FINAL.
   PUBLIC SECTION.
     METHODS : getdata_sat ,
-      getdatasas ,
-      display_data_sat,
-      display_data_sas,
-      display.
+              getdata_sas ,
+              display_sat,
+              display_grid,
+              display_sas,
+              display.
 ENDCLASS.
 
 *   PRIVATE SECTION.
@@ -30,50 +31,52 @@ CLASS lcl_main_controller IMPLEMENTATION.
            eban~meins
     FROM eban
     INNER JOIN ekpo ON ekpo~banfn = eban~banfn AND ekpo~matkl = eban~matkl
-    WHERE eban~banfn IN @sat_no AND eban~bsart IN @sat_bel.
-
-      LOOP AT gt_sat ASSIGNING FIELD-SYMBOL(<ls_point>).
-        IF <ls_point>-menge > 10 .
-          <ls_point>-color = 'C510'.
-        ENDIF.
-      ENDMETHOD.
-
-
-
-
-      METHOD getdata_sas.
-        SELECT ekpo~ebeln,
-              ekpo~ebelp,
-              ekpo~matnr,
-              ekpo~menge,
-              ekpo~meins
-       FROM ekpo
-       INNER JOIN eban ON eban~banfn = ekpo~banfn AND ekpo~matkl = eban~matkl
-       WHERE ekpo~ebeln IN @sas_no AND ekpo~matkl IN @sas_bel
-       INTO TABLE @gt_sas.
+    WHERE eban~banfn IN @sat_no AND eban~bsart IN @sat_bel
+       INTO TABLE @gt_sat.
+    LOOP AT gt_sat ASSIGNING FIELD-SYMBOL(<ls_point>).
+      IF <ls_point>-menge > 10 .
+        <ls_point>-color = 'C510'.
+      ENDIF.
+    ENDLOOP.
+  ENDMETHOD.
 
 
 
-          LOOP AT gt_sas INTO gs_sas.
-            IF gs_sas-menge > 10.
-              gs_sas-color = 'C510'.
-            ENDIF.
-            MODIFY gt_sas FROM gs_sas.
-          ENDLOOP.
 
-        ENDMETHOD.
-        METHOD display_data_sat.
-          IF me->mt_eban_list IS INITIAL.
-            MESSAGE 'Veri bulunamadı!' TYPE 'S' DISPLAY LIKE 'E'.
-          ELSE.
-            CALL SCREEN 0100.
-          ENDIF.
-        ENDMETHOD.
+  METHOD getdata_sas.
+    SELECT ekpo~ebeln,
+          ekpo~ebelp,
+          ekpo~matnr,
+          ekpo~menge,
+          ekpo~meins
+   FROM ekpo
+   INNER JOIN eban ON eban~banfn = ekpo~banfn AND ekpo~matkl = eban~matkl
+   WHERE ekpo~ebeln IN @sas_no AND ekpo~matkl IN @sas_mal
+   INTO TABLE @gt_sas.
 
-        METHOD display_data_sas.
-          IF me->mt_ekpo_list IS INITIAL.
-            MESSAGE 'Veri bulunamadı!' TYPE 'S' DISPLAY LIKE 'E'.
-          ELSE.
-            CALL SCREEN 0100.
-          ENDIF.
-        ENDMETHOD.
+
+
+    LOOP AT gt_sas INTO gs_sas.
+      IF gs_sas-menge > 10.
+        gs_sas-color = 'C510'.
+      ENDIF.
+      MODIFY gt_sas FROM gs_sas.
+    ENDLOOP.
+
+  ENDMETHOD.
+  METHOD display_sat.
+    IF gt_sat IS INITIAL.
+      MESSAGE 'Veri bulunamadı!' TYPE 'S' DISPLAY LIKE 'E'.
+    ELSE.
+      CALL SCREEN 0100.
+    ENDIF.
+  ENDMETHOD.
+
+  METHOD display_sas.
+    IF gt_sas IS INITIAL.
+      MESSAGE 'Veri bulunamadı!' TYPE 'S' DISPLAY LIKE 'E'.
+    ELSE.
+      CALL SCREEN 0100.
+    ENDIF.
+  ENDMETHOD.
+  ENDCLASS.
